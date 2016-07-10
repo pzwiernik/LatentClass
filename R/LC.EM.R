@@ -4,10 +4,10 @@
 #' @param counts   The array of counts of format (r[1],...,r[m])
 #' @param k   The number of latent classes fitted
 #' @param tries   The number of times the EM algorithm reruns from different random starting points. The default value is tries=3
-#' @param theta   The vector of parameters from which the algorithm starts. If not specified, the algorithm starts from a random point. 
+#' @param theta   The vector of parameters from which the algorithm starts. If not specified, the algorithm starts from a random point.
 #' @param tol    The convergence criterion for the EM algorithm. The maximal decrease of the log-likelihood function that will terminate the algorithm.
 #' @keywords EM algorithm, latent class model
-#' @export 
+#' @export
 #' @examples
 #' theta0 <- list()
 #' length(theta0) <- 5
@@ -18,29 +18,29 @@
 #' theta0[[5]] <- c(1-0.7,0.7)
 #' n <- 1000
 #' counts <- sample.counts(n, theta0)
-#' EM(counts,2)
+#' LC.EM(counts,2)
 LC.EM <- function(counts, k, tries=3, theta=NULL, tol=1e-6){
   require(gtools)
   output <- list()
-  length(output) <- tries  
+  length(output) <- tries
   likes.1 <- rep(0,tries)
   r <- dim(counts)
   n <- sum(counts)
   phat <- counts/n
-  
-  
+
+
   st <- 1
-  # if the vector of starting parameters is provided we set tries to 1. 
+  # if the vector of starting parameters is provided we set tries to 1.
   if (!is.null(theta)){
     st <- 0
     tries <- 1
   }
-  
+
   #now we run the EM-algorithm several times starting from random starting points
   for (tr in 1:tries){
     # sample a starting point unless it was provided by the user
     if (st==1){
-      theta <- sample.Theta(r,k)    
+      theta <- sample.Theta(r,k)
     }
     l0 <- 110
     l1 <-100
@@ -52,7 +52,7 @@ LC.EM <- function(counts, k, tries=3, theta=NULL, tol=1e-6){
       l1 <- llike(counts,theta)
       n.steps <- n.steps+1
     }
-    likes.1[tr] <- llike(counts,theta)  
+    likes.1[tr] <- llike(counts,theta)
     output[[tr]] <- list(parameters=theta,likelihood=likes.1[tr],iterations=n.steps)
   }
   if (tries==1){
