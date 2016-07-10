@@ -1,0 +1,8 @@
+Package: LatentClass
+Title: Estimation of the latent class model for discrete data
+Version: 0.0.1
+Authors@R: person("Piotr", "Zwiernik", , "piotr.zwiernik@gmail.com", role = c("aut", "cre"))
+Description: In its current version, the package uses the EM algorithm to fit a latent class model with a prespecified number of latent classes. 
+Depends: R (>= 3.0.2)
+License: What license is it under?
+LazyData: true

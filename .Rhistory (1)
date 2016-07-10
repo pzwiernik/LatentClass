@@ -1,0 +1,512 @@
+solve(mS)
+M <- c(2,3,5)
+mS <- S[M,M]
+solve(mS)
+M <- c(2,4,5)
+mS <- S[M,M]
+solve(mS)
+M <- c(3,4,5)
+mS <- S[M,M]
+solve(mS)
+p <- 5
+it <- 1000
+yes <- 0
+for (i in 1:it){
+K <- solve(rcorrmatrix(p))
+diag(K) <- 0
+yes <- yes+prod((K<=0))
+}
+yes
+p <- 6
+it <- 1000
+yes <- 0
+for (i in 1:it){
+K <- solve(rcorrmatrix(p))
+diag(K) <- 0
+yes <- yes+prod((K<=0))
+}
+yes
+library(MASS)
+library(clusterGeneration)
+library(gtools)
+library(combinat)
+library(CHNOSZ)
+p <- 6
+it <- 1000
+yes <- 0
+for (i in 1:it){
+K <- solve(rcorrmatrix(p))
+diag(K) <- 0
+yes <- yes+prod((K<=0))
+}
+yes
+p <- 10
+it <- 1000
+yes <- 0
+for (i in 1:it){
+K <- solve(rcorrmatrix(p))
+diag(K) <- 0
+yes <- yes+prod((K<=0))
+}
+yes
+p <- 50
+it <- 1000
+yes <- 0
+for (i in 1:it){
+K <- solve(rcorrmatrix(p))
+diag(K) <- 0
+yes <- yes+prod((K<=0))
+}
+yes
+library(ape)
+rtree(3)
+plot(rtree(3))
+summary(rtree(3))
+?rtree
+T$edge.length
+T <- rtree(m)
+T$edge.length
+plot(T)
+dist(T)
+summary(T)
+T$distances
+T$dist
+cophenetic(T)
+DistMatrix<-cophenetic(T)
+?cophenetic
+T$edge.length
+plot(T)
+?rtree
+thr <- runif(1)
+thr
+plot(T)
+0.39093305+0.54151689
+DistMatrix <- thr+DistMatrix
+DistMatrix
+diag(DistMatrix) <- 0
+?
+cophenetic
+root(T,t1)
+root(T,'t1')
+plot(root(T,'t1'))
+m <- 3 # number of leaves
+T0 <- rtree(m+1)
+T <- root(T,'t1')
+cophenetic(T)
+Sigma <- matrix(0,m,m)
+diag(Sigma) <- DistMatrix(1,2:)
+diag(Sigma) <- DistMatrix(1,2:end)
+diag(Sigma) <- DistMatrix(1,2:(m+1))
+diag(Sigma) <- DistMatrix[1,2:]
+diag(Sigma) <- DistMatrix[1,2:(m+1)]
+m <- 3 # number of leaves
+T0 <- rtree(m+1)
+DistMatrix<-cophenetic(T0) #compute distances between the leaves
+T <- root(T,'t1') # now forget about
+Sigma <- matrix(0,m,m)
+diag(Sigma) <- DistMatrix[1,2:(m+1)]
+Sigma
+ones(m)
+Sigma <- (outer(ones,DistMatrix[1,2:(m+1)])+outer(DistMatrix[1,2:(m+1)],ones))/2
+ones <- rep(1,m)
+Sigma <- (outer(ones,DistMatrix[1,2:(m+1)])+outer(DistMatrix[1,2:(m+1)],ones))/2
+Sigma
+outer(ones,DistMatrix[1,2:(m+1)])
+outer(DistMatrix[1,2:(m+1)]
+,ones)
+Sigma <- (outer(ones,DistMatrix[1,2:(m+1)])+outer(DistMatrix[1,2:(m+1)],ones)-DistMatrix[2:(m+1),2:(m+1)])/2
+Sigma
+DistMatrix
+Sigma <- (outer(ones,DistMatrix[1,2:(m+1)])+outer(DistMatrix[1,2:(m+1)],ones)-DistMatrix[2:(m+1),2:(m+1)])/2
+Sigma
+library(MASS)
+n <- 2
+mvrnorm(n, 0, Sigma)
+mvrnorm(n, rep(0,m), Sigma)
+n <- 200
+dat <- mvrnorm(n, rep(0,m), Sigma)
+S <- cov(dat)*(n-1)/n
+S
+Sigma
+which.edge(T, 1:2)
+?which.edge
+?drop.tip
+?clade
+?subclade
+?getMRCA
+?rtree
+T0 <- rtree(m+1,tip.label=0:m)
+T0
+m <- 3 # number of leaves
+T0 <- rtree(m+1,tip.label=0:m)
+DistMatrix<-cophenetic(T0) #compute distances between the leaves
+T <- root(T,0) # now forget about
+?root
+T <- root(T,node=0) # now forget about
+T <- root(T,node='0') # now forget about
+T <- root(T0,node=0) # now forget about
+T <- root(T0,node='0') # now forget about
+T <- root(T0,0) # now forget about
+T <- root(T0,'0') # now forget about
+plot(T)
+which.edge(T, 1:2)
+getMRCA(T,1,2)
+getMRCA(T,c(1,2))
+?getclade
+extract.clade(T,6)
+extract.clade(T,5)
+extract.clade(T,0)
+extract.clade(T,getMRCA(T,c(1,2)))
+?prop.part
+prop.part(T)
+plot(T)
+?vcv
+S
+vcv(T)
+vcv(extract.clade(T,1:3))
+vcv(extract.clade(T,getMRCA(T,c(1,2,3))))
+extract.clade(T,getMRCA(T,c(1,2,3)))
+plot(T)
+extract.clade(T,getMRCA(T,c(1,3)))
+extract.clade(T,1:3)
+T <- drop(T,'0')
+?drop
+?tree.drop
+?root.drop
+T <- drop.tip(T, '0')
+plot(T)
+vcv(T)
+Sigma
+?vcv
+m <- 3 # number of leaves
+T0 <- rtree(m+1,tip.label=0:m)
+DistMatrix<-cophenetic(T0) #compute distances between the leaves
+m <- 3 # number of leaves
+T0 <- rtree(m+1,tip.label=0:m)
+DistMatrix<-cophenetic(T0) #compute distances between the leaves
+T <- unroot(T0)
+plot(T)
+m <- 3 # number of leaves
+T0 <- rtree(m+1,tip.label=0:m)
+DistMatrix<-cophenetic(T0) #compute distances between the leaves
+T <- root(T0,'0')
+ones <- rep(1,m)
+Sigma <- (outer(ones,DistMatrix[1,2:(m+1)])+outer(DistMatrix[1,2:(m+1)],ones)-DistMatrix[2:(m+1),2:(m+1)])/2
+n <- 200
+dat <- mvrnorm(n, rep(0,m), Sigma)
+S <- cov(dat)*(n-1)/n
+Sigma
+vcv(T)
+?vcv
+V <- vcv(T)
+V <- V[1,1]+V[2:3,2:3]
+V
+V <- vcv(T)
+V <- V[1,1]+V[2:4,2:4]
+V
+Sigma
+V <- vcv(T)
+Sigma <- V[1,1]+V[2:(m+1),2:(m+1)]
+Sigma
+Sigma
+vcv(T)
+V <- vcv(T)
+Sigma <- V[m+1,m+1]+V[1:m,1:m]
+Sigma
+plot(T)
+?ace
+n <- 200
+dat <- mvrnorm(n, rep(0,m), Sigma)
+S <- cov(dat)*(n-1)/n
+ace(dat,T)
+m <- 3 # number of leaves
+T0 <- rtree(m+1,tip.label=0:m)
+DistMatrix<-cophenetic(T0) #compute distances between the leaves
+T <- root(T0,'0')  # now forget about 0
+V <- vcv(T)
+Sigma <- V[m+1,m+1]+V[1:m,1:m]
+n <- 200
+dat <- mvrnorm(n, rep(0,m), Sigma)
+S <- cov(dat)*(n-1)/n
+ace(dat,T)
+plot(T)
+m <- 3 # number of leaves
+T0 <- rtree(m+1,tip.label=0:m)
+V <- vcv(T0)
+n <- 200
+dat <- mvrnorm(n, rep(0,m), V)
+S <- cov(dat)*(n-1)/n
+dat <- mvrnorm(n, rep(0,m+1), V)
+S <- cov(dat)*(n-1)/n
+ace(dat,T)
+?ace
+ace(dat,T, method='pic')
+is.binary.tree(T)
+is.binary.tree(T)
+is.rooted.tree(T)
+is.rooted(T)
+m <- 3 # number of leaves
+T0 <- rtree(m+1,tip.label=0:m)
+DistMatrix<-cophenetic(T0) #compute distances between the leaves
+T <- root(T0,'0')  # now forget about 0
+is.rooted(T)
+is.rooted(T0)
+?root
+T <- root(T0,'0',resolve.root = TRUE)  # now forget about 0
+is.rooted(T)
+plot(T)
+m <- 3 # number of leaves
+T0 <- rtree(m+1,tip.label=0:m)
+DistMatrix<-cophenetic(T0) #compute distances between the leaves
+T <- root(T0,'0',resolve.root = TRUE)  # now forget about 0
+V <- vcv(T)
+Sigma <- V[m+1,m+1]+V[1:m,1:m]
+n <- 200
+dat <- mvrnorm(n, rep(0,m), Sigma)
+S <- cov(dat)*(n-1)/n
+ace(dat,T, method='pic')
+ace(dat,drop.tip(T,'0'), method='pic')
+drop.tip(T,'0')
+plot(drop.tip(T,'0'))
+plot(T)
+ace(dat,drop.tip(T,'0'), method='pic')
+ace(S,drop.tip(T,'0'), method='pic')
+?ace
+ace(dat[1,],drop.tip(T,'0'), method='pic')
+ace(dat,drop.tip(T,'0'), method='pic')
+ace(t(dat),drop.tip(T,'0'), method='pic')
+?rtree
+ace(t(dat),drop.tip(T,'0'))
+ace(dat,drop.tip(T,'0'))
+ace(dat[1,],drop.tip(T,'0'))
+dat
+ace(c(dat),drop.tip(T,'0'))
+?ace
+13.25+8+12+20.50+16.20+5.10+23.13+10.50+6.10+10.50+15.14+5.30
+theta[[1]]
+length(theta) <- 5
+w <- runif(1,0,1/4)
+x <- runif(1,0,1/4)
+y <- runif(1,0,1/4)
+z <- runif(1,0,1/4)
+theta[[1]] <- matrix(c(1-x-y-z,w,w,w,x,1-w-y-z,x,x,y,y,1-w-x-z,y,z,z,z,1-w-x-y),4,4)
+theta[[1]]
+eigen(theta[[1]])
+(3378-2720)/3378
+K <- 5
+alpha <- c(1/6,1/7,1/8,1/9,1/10)
+outer(rep(1,K),alpha)
+P <- outer(rep(1,K),alpha)+(1-sum(alpha))*diag(K)
+P
+eigen(P)
+eigen(t(P))
+alpha
+alpha/sum(alpha)
+0.4472136^2
+eigen(t(P))$vectors[,1]
+v <- eigen(t(P))$vectors[,1]
+v/sum(v)
+PP <- diag(alpha)*P/sa
+sa <- sum(alpha)
+P <- outer(rep(1,K),alpha)+(1-sa)*diag(K)
+PP <- diag(alpha)*P/sa
+sum(PP)
+P
+apply(P,2,sum)
+apply(P,1,sum)
+PP <- diag(diag(alpha))*P/sa
+sum(PP)
+(1:K)%*%PP%*%(1:K)
+MP <- alpha/sa
+MP <- alpha/sa
+(1:K)%*%PP%*%(1:K)-((1:K)%*%MP)^2
+((1:K)%*%PP%*%(1:K)-((1:K)%*%MP)^2)/(((1:K)^2)%*%MP-((1:K)%*%MP)^2)
+eigen(P)
+eigen(t(P))
+((1:K)%*%PP%*%(1:K)-((1:K)%*%MPX)*((1:K)%*%MPY))/sqrt((((1:K)^2)%*%MPX-((1:K)%*%MPX)^2)*(((1:K)^2)%*%MPY-((1:K)%*%MPY)^2))
+MPX <- alpha/sa
+MPY <- alpha/sa
+((1:K)%*%PP%*%(1:K)-((1:K)%*%MPX)*((1:K)%*%MPY))/sqrt((((1:K)^2)%*%MPX-((1:K)%*%MPX)^2)*(((1:K)^2)%*%MPY-((1:K)%*%MPY)^2))
+MPX <- alpha^2
+MPY <- alpha^3
+MPX <- MPX/sum(MPX)
+MPY <- MPY/sum(MPY)
+((1:K)%*%PP%*%(1:K)-((1:K)%*%MPX)*((1:K)%*%MPY))/sqrt((((1:K)^2)%*%MPX-((1:K)%*%MPX)^2)*(((1:K)^2)%*%MPY-((1:K)%*%MPY)^2))
+MPX
+PP
+VX <- ((1:K)^2)%*%MPX-((1:K)%*%MPX)^2
+VY <- ((1:K)^2)%*%MPY-((1:K)%*%MPY)^2
+VX
+VY
+((1:K)%*%PP%*%(1:K)-((1:K)%*%MPX)*((1:K)%*%MPY))/sqrt(VX*VY)
+sum(MPX)
+sum(MPY)
+(1:K)%*%PP%*%(1:K)
+(1:K)%*%MPX
+(1:K)%*%MPY
+MX <- (1:K)%*%MPX
+MY <- (1:K)%*%MPY
+((1:K)%*%PP%*%(1:K)-MX*MY)/sqrt(VX*VY)
+(1:K)^2
+((1:K)^2)%*%MPX
+(1:K)%*%MPX
+((1:K)%*%MPX)^2
+(1:K)%*%PP%*%(1:K)
+PP
+((1:K)%*%PP%*%(1:K)-MX*MY)/sqrt(VX*VY)
+K <- 5
+alpha <- c(1/6,1/7,1/8,1/9,1/10)
+sa <- sum(alpha)
+P <- outer(rep(1,K),alpha)+(1-sa)*diag(K)
+PP <- diag(diag(alpha))*P/sa
+PP
+MPX <- alpha^2
+MPY <- alpha^3
+MPX
+MPY
+MPX <- MPX/sum(MPX)
+MPY <- MPY/sum(MPY)
+MPY
+VX <- ((1:K)^2)%*%MPX-((1:K)%*%MPX)^2
+VY <- ((1:K)^2)%*%MPY-((1:K)%*%MPY)^2
+VX
+VY
+MX <- (1:K)%*%MPX
+MY <- (1:K)%*%MPY
+(1:K)
+(1:K)%*%PP
+(1:K)%*%PP
+PP
+(1:K)%*%PP%*%(1:K)-
+0
+MX*MY
+sqrt(VX*VY)
+sum(PP)
+t(1:K)%*%PP%*%(1:K)
+(1:K)%*%MPX
+EXY <- 0
+for (i in 1:K){
+for (j in 1:K){
+EXY <- PP[i,j]*i*j
+}
+}
+EXY
+(1:K)%*%PP%*%t(1:K)
+PP%*%(1:K)
+(1:K)
+eigen(PP)
+norm(1:K)
+t(1:K)%*%PP%*%(1:K)
+PP <- diag(MPY)*P
+sum(PP)
+diag(MPY)*P
+PP <- diag(MPY)%*%P
+sum(PP)
+VX <- ((1:K)^2)%*%MPX-((1:K)%*%MPX)^2
+VY <- ((1:K)^2)%*%MPY-((1:K)%*%MPY)^2
+MX <- (1:K)%*%MPX
+MY <- (1:K)%*%MPY
+((1:K)%*%PP%*%(1:K)-MX*MY)/sqrt(VX*VY)
+eigen(PP)
+eigen(P)
+K <- 5
+alpha <- c(1/6,1/7,1/8,1/9,1/10)
+alpha2 <- c(1/7,1/8,1/9,1/11,1/12)
+sa <- sum(alpha)
+sa2 <- sum(alpha2)
+P1 <- outer(rep(1,K),alpha)+(1-sa)*diag(K)
+P2 <- outer(rep(1,K),alpha2)+(1-sa2)*diag(K)
+P1
+P2
+MPH <- alpha^2
+MPH <- MPX/sum(MPX)
+PPY <- diag(MPH)%*%P2
+apply(PPX,2,sum)
+PPX <- diag(MPH)%*%P1
+PPY <- diag(MPH)%*%P2
+apply(PPX,2,sum)
+apply(PPY,2,sum)
+MPX <- apply(PPX,1,sum)
+MPY <- apply(PPY,1,sum)
+MPX
+VH <- ((1:K)^2)%*%MPH-((1:K)%*%MPH)^2
+VX <- ((1:K)^2)%*%MPX-((1:K)%*%MPX)^2
+VY <- ((1:K)^2)%*%MPY-((1:K)%*%MPY)^2
+MX <- (1:K)%*%MPX
+MY <- (1:K)%*%MPY
+MH <- (1:K)%*%MPH
+CXH <- ((1:K)%*%PPX%*%(1:K)-MX*MH)/sqrt(VX*VH)
+CYH <- ((1:K)%*%PPY%*%(1:K)-MY*MH)/sqrt(VY*VH)
+CXH
+CYH
+PPXYH <- array(0, c(K,K,K))
+for (x in 1:K){
+for (y in 1:K){
+for (h in 1:K){
+PPXYH[x,h,y] <- PPX[x,h]* PPY[y,h]/MPH[h]
+}
+}
+}
+PPXYH
+PPXY <- apply(PPXYH,c(1,3),sum)
+CYH <- ((1:K)%*%PPXY%*%(1:K)-MY*MX)/sqrt(VY*VX)
+CYH
+CXH <- ((1:K)%*%PPX%*%(1:K)-MX*MH)/sqrt(VX*VH)
+CYH <- ((1:K)%*%PPY%*%(1:K)-MY*MH)/sqrt(VY*VH)
+CXY <- ((1:K)%*%PPXY%*%(1:K)-MY*MX)/sqrt(VY*VX)
+CYH*CXH
+CXY
+M2 <- List(List(  x,     x^2,  x^3,  x^4),
+List(  x^5,   x^6,  x^7,  x^8),
+List(  x^9, 2*x  ,3*x  ,  4*x),
+List(2*x^2, 3*x^3, 4*x^4, 5*x^5))
+Inverse(M2)
+install.packages("Ryacas")
+library(Ryacas)
+M2 <- List(List(  x,     x^2,  x^3,  x^4),
+List(  x^5,   x^6,  x^7,  x^8),
+List(  x^9, 2*x  ,3*x  ,  4*x),
+List(2*x^2, 3*x^3, 4*x^4, 5*x^5))
+Inverse(M2)
+x <- Sym('x')
+M <- List(List(1,x),List(x,1))
+PrettyForm(M)
+Inverse(M)
+716.80+199+50+708.31+608.63+1282.07+145.71+2140.94
+counts <-  array(c(12, 23, 34, 45, 56, 67, 78, 90),c(2,2,2))
+res <- exact222(c(counts))
+library(LatentClass)
+res <- exact222(c(counts))
+?exact222
+?test222
+library(LatentClass)
+res <- exact222(c(counts))
+install.packages("manipulate")
+setwd("~/Documents/_MyWork/_code/R/packages/LatentClass")
+document()
+library("devtools")
+library(roxygen2)
+document()
+document()
+document()
+?LatentClass
+?test222
+res <- exact222(c(counts))
+res$min.deviance
+res$fitted.values
+resEM <- LC.EM(counts,2,tries=1,tol=1e-10)
+library(gtools)
+resEM <- LC.EM(counts,2,tries=1,tol=1e-10)
+document()
+pp <- compute.P(resEM$parameters)
+mpp <- Reduce("+",pp)
+sum(counts)*c(mpp)
+resEM <- LC.EM(counts,2,tries=1,tol=1e-10)
+pp <- compute.P(resEM$parameters)
+mpp <- Reduce("+",pp)
+sum(counts)*c(mpp)
+sum(counts)*c(mpp)-res$fitted.values
+resEM <- LC.EM(counts,2,tries=1,tol=1e-8)
+pp <- compute.P(resEM$parameters)
+mpp <- Reduce("+",pp)
+sum(counts)*c(mpp)-res$fitted.values
